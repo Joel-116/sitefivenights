@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery Service</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="image/favicon.ico" />
+    <script src="pchoice.js"></script>
+    <style>
+        .content-form {
+            width: 650px;
+            height: auto;
+            justify-content: center;
+            background-color: var(--vermelhoescuro);
+            border: 2px solid var(--icterina);
+            margin: 0 auto;
+            /* Centraliza o formulário */
+        }
+
+        /* Estilos adicionais para o layout da página */
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            /* Espaço ao redor dos elementos */
+            max-width: 1200px;
+            /* Define a largura máxima do conteúdo */
+            margin: 20px auto;
+            /* Centraliza e define margens */
+            padding: 20px;
+        }
+
+        .foxy-image,
+        .chica-image {
+            max-width: 30%;
+            /* Define a largura máxima das imagens */
+        }
+
+        .foxy-image {
+            order: 1;
+            /* Define a ordem do foxy para 1 (esquerda) */
+        }
+
+        .content-form {
+            order: 2;
+            /* Define a ordem do formulário para 2 (centro) */
+        }
+
+        .chica-image {
+            order: 3;
+            /* Define a ordem da chica para 3 (direita) */
+        }
+
+        /* Estilos para telas menores */
+        @media screen and (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                /* Empilha os elementos em telas menores */
+            }
+
+            .foxy-image,
+            .chica-image {
+                max-width: 100%;
+                /* Ajusta a largura das imagens para 100% em telas menores */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="ourdelivery">We deliver to your home!</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-menu">
+            <li><a class="click" href="index.html">Home</a></li>
+            <li><a class="click" href="aboutus.html">A little presentation</a></li>
+            <li><a class="click" href="delivery.html">Delivery Service</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <img src="image/foxy_battington.png" alt="Foxy The Pirate Fox looking for you! (be careful Daaaaavy Joooonees)"
+            class="foxy-image" />
+        <form class="content-form">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="name" required /><br /><br />
+                <label for="idcpf">Enter your ITR:</label>
+                <input type="number" id="idcpf" name="cpf" required /><br /><br />
+                <label for="emaill">Enter your Email if you want to receive some offers!</label>
+                <input type="email" id="emaill" name="emaill" /><br /><br />
+            </fieldset>
+
+            <fieldset>
+                <legend>Address Information</legend>
+                <label for="street">Street Address:</label>
+                <input type="text" id="street" name="street" required /><br /><br />
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required /><br /><br />
+                <label for="state" class="myfont2">State:</label>
+                <input type="text" id="state" name="state" required /><br /><br />
+                <label for="zip" class="myfont2">ZIP Code:</label>
+                <input type="text" id="zip" name="zip" required /><br /><br />
+            </fieldset>
+
+            <fieldset>
+                <legend>Menu</legend>
+                <label for="pizza-type">Choose your pizza:</label>
+                <select id="pizza-type">
+                    <option value="custom">Custom Pizza</option>
+                    <option value="pepperoni">Pepperoni Pizza</option>
+                    <option value="mushroom">Mushroom Pizza</option>
+                    <option value="sausage">Sausage Pizza</option>
+                    <option value="supreme">Supreme Pizza</option>
+                    <option value="cheese">Cheese Pizza</option>
+                </select><br /><br />
+
+                <div id="premade-options">
+                    <div id="pizza-description" style="display: none;">
+                        <h3 id="pizza-name"></h3>
+                        <img id="pizza-image" src="" alt="Pizza Image" style="max-width: 100%;" />
+                        <p id="pizza-ingredients"></p>
+                    </div>
+
+                    <div id="pepperoni-options" class="pizza-options" style="display: none;">
+                        <input type="checkbox" id="no-paprika" name="remove-toppings" value="paprika" />
+                        <label for="no-paprika">No Paprika</label><br />
+                        <input type="checkbox" id="no-chili-flakes" name="remove-toppings" value="chili-flakes" />
+                        <label for="no-chili-flakes">No Chili Flakes</label><br />
+                        <input type="checkbox" id="no-cayenne-pepper" name="remove-toppings" value="cayenne-pepper" />
+                        <label for="no-cayenne-pepper">No Cayenne Pepper</label><br />
+                        <input type="checkbox" id="no-fennel-seed" name="remove-toppings" value="fennel-seed" />
+                        <label for="no-fennel-seed">No Fennel Seed</label><br />
+                        <input type="checkbox" id="no-garlic-pepperoni" name="remove-toppings" value="garlic" />
+                        <label for="no-garlic-pepperoni">No Garlic</label><br />
+                    </div>
+
+                    <div id="mushroom-options" class="pizza-options" style="display: none;">
+                        <input type="checkbox" id="no-onions" name="remove-toppings" value="onions" />
+                        <label for="no-onions">No Onions</label><br />
+                        <input type="checkbox" id="no-garlic" name="remove-toppings" value="garlic" />
+                        <label for="no-garlic">No Garlic</label><br />
+                        <input type="checkbox" id="no-kale" name="remove-toppings" value="kale" />
+                        <label for="no-kale">No Kale</label><br />
+                    </div>
+
+                    <div id="sausage-options" class="pizza-options" style="display: none;">
+                        <input type="checkbox" id="no-onions-sausage" name="remove-toppings" value="onions" />
+                        <label for="no-onions-sausage">No Onions</label><br />
+                        <input type="checkbox" id="no-bell-peppers" name="remove-toppings" value="bell-peppers" />
+                        <label for="no-bell-peppers">No Bell Peppers</label><br />
+                        <input type="checkbox" id="no-jalapenos" name="remove-toppings" value="jalapenos" />
+                        <label for="no-jalapenos">No Jalapenos</label><br />
+                    </div>
+
+                    <div id="supreme-options" class="pizza-options" style="display: none;">
+                        <input type="checkbox" id="no-pepperoni-supreme" name="remove-toppings" value="pepperoni" />
+                        <label for="no-pepperoni-supreme">No Pepperoni</label><br />
+                        <input type="checkbox" id="no-seasoned-pork" name="remove-toppings" value="seasoned-pork" />
+                        <label for="no-seasoned-pork">No Seasoned Pork</label><br />
+                        <input type="checkbox" id="no-beef" name="remove-toppings" value="beef" />
+                        <label for="no-beef">No Beef</label><br />
+                        <input type="checkbox" id="no-mushrooms-supreme" name="remove-toppings" value="mushrooms" />
+                        <label for="no-mushrooms-supreme">No Mushrooms</label><br />
+                        <input type="checkbox" id="no-green-bell-peppers" name="remove-toppings"
+                            value="green-bell-peppers" />
+                        <label for="no-green-bell-peppers">No Green Bell Peppers</label><br />
+                        <input type="checkbox" id="no-onions-supreme" name="remove-toppings" value="onions" />
+                        <label for="no-onions-supreme">No Onions</label><br />
+                    </div>
+
+                    <div id="cheese-options" class="pizza-options" style="display: none;">
+                        <input type="checkbox" id="no-beef-cheese" name="remove-toppings" value="beef" />
+                        <label for="no-beef-cheese">No Beef</label><br />
+                        <input type="checkbox" id="no-pork" name="remove-toppings" value="pork" />
+                        <label for="no-pork">No Pork</label><br />
+                        <input type="checkbox" id="no-pepperoni-cheese" name="remove-toppings" value="pepperoni" />
+                        <label for="no-pepperoni-cheese">No Pepperoni</label><br />
+                        <input type="checkbox" id="no-olivers" name="remove-toppings" value="olivers" />
+                        <label for="no-olivers">No Olivers</label><br />
+                        <input type="checkbox" id="no-peppers" name="remove-toppings" value="peppers" />
+                        <label for="no-peppers">No Peppers</label><br />
+                        <input type="checkbox" id="no-onions-cheese" name="remove-toppings" value="onions" />
+                        <label for="no-onions-cheese">No Onions</label><br />
+                        <input type="checkbox" id="no-tomatos-cheese" name="remove-toppings" value="tomatos" />
+                        <label for="no-tomatos-cheese">No Tomatos</label><br />
+                    </div>
+                </div>
+
+                <div id="custom-options" style="display: none;">
+                    <!-- Opções para pizzas customizadas -->
+                    <label for="sauce">Choose your sauce:</label><br />
+                    <input type="radio" id="red" name="sauce" value="red" />
+                    <label for="red">Red Sauce</label><br />
+                    <input type="radio" id="white" name="sauce" value="white" />
+                    <label for="white">White Sauce</label><br /><br />
+
+                    <label for="cheese-amount">Cheese amount:</label>
+                    <input type="range" id="cheese-amount" name="cheese-amount" min="0" max="10" /><br /><br />
+
+                    <label for="toppings">Select toppings:</label><br />
+                    <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni" />
+                    <label for="pepperoni">Pepperoni</label><br />
+                    <input type="checkbox" id="mushrooms" name="toppings" value="mushrooms" />
+                    <label for="mushrooms">Mushrooms</label><br />
+                    <input type="checkbox" id="sausage" name="toppings" value="sausage" />
+                    <label for="sausage">Sausage</label><br />
+                    <input type="checkbox" id="bacon" name="toppings" value="bacon" />
+                    <label for="bacon">Bacon</label><br />
+                    <input type="checkbox" id="onions" name="toppings" value="onions" />
+                    <label for="onions">Onions</label><br />
+                    <input type="checkbox" id="extra-cheese" name="toppings" value="extra-cheese" />
+                    <label for="extra-cheese">Extra Cheese</label><br />
+                </div>
+
+            </fieldset>
+
+            <input type="reset" value="Clear All" />
+            <input type="submit" value="Place Order" />
+        </form>
+        <img src="image/chica_battington.png" alt="Chicken the Chicken holding an cupcake" class="chica-image" />
+    </main>
+
+    <footer>
+        <h1 class="myfont">Make your own flavor!</h1>
+    </footer>
+</body>
+
+</html>

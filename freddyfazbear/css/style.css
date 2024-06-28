@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Battipaglia';
+    src: url(fonts/Battipaglia.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --vermelhoescuro: #693120;
+    --vermelhosangue: #310E03;
+    --icterina: #fffa66;
+    --cidra: #cccc00;
+    --ourovelho: #9d8f10;
+    --roxo: #40264a;
+    --branco: #ffffff;
+    --preto: #000000;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Garante que o body tenha pelo menos a altura da viewport */
+    position: relative;
+    /* Necessário para posicionar corretamente o footer */
+    background-size: 25%;
+    background-image: url('https://img.freepik.com/vetores-premium/desenho-de-camiseta-de-cor-vector-floral_775375-55.jpg?w=740');
+    color: var(--branco)
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-color: var(--vermelhoescuro);
+    color: var(--icterina);
+}
+
+nav {
+    width: 100%;
+    background-color: var(--vermelhoescuro);
+}
+
+/* Estilo para o menu de navegação */
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    /* Centraliza os itens do menu */
+}
+
+.nav-menu li {
+    margin: 0 10px;
+    /* Espaçamento entre os itens do menu */
+}
+
+.nav-menu a {
+    display: block;
+    color: var(--branco);
+    /* Cor do texto */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    /* Remove o sublinhado */
+    font-size: 18px;
+    /* Tamanho da fonte */
+    background-color: var(--vermelhoescuro);
+}
+
+.nav-menu a:hover {
+    background-color: var(--vermelhosangue);
+    /* Cor de fundo ao passar o mouse */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+footer {
+    background-color: var(--vermelhoescuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.animatronics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 30px;
+    /* Espaçamento entre o conteúdo e o vídeo */
+    background-color: var(--roxo);
+    /* Cor de fundo do content */
+    border: 4px solid var(--icterina);
+    /* Adiciona uma borda de 2px de largura e cor icterina */
+}
+
+.video-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Espaçamento entre o vídeo e o próximo elemento */
+}
+
+.myfont {
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+}
+
+.ourworld {
+    text-align: center;
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+    font-size: 15vh;
+}
+
+.ourdelivery {
+    text-align: center;
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+    font-size: 15vh;
+}
+
+.welcometo {
+    text-align: center;
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+    font-size: 15vh;
+}
+
+.click {
+    color: var(--icterina);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Battipaglia', sans-serif;
+    font-size: 5vh;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave */
+}
+
+.parag {
+    text-align: center;
+    font-family: sans-serif;
+    color: var(--branco);
+    font-size: auto;
+}
+
+.click:link,
+.click:visited {
+    color: var(--icterina);
+}
+
+.click:hover {
+    color: var(--cidra);
+    /* Cor um pouco mais escura ao passar o mouse */
+}
+
+.click:active {
+    color: var(--ourovelho);
+    /* Cor ainda mais escura ao clicar */
+}
+
+#pizza-name {
+    text-align: center;
+}
