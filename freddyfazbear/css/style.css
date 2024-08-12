@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* Define a codificação de caracteres para UTF-8 */
+
+/* Reset básico de CSS */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1em;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* Inclui bordas e padding no cálculo do tamanho total dos elementos */
+}
+
+/* Definição de uma fonte personalizada */
+@font-face {
+    font-family: 'Battipaglia';
+    src: url(fonts/Battipaglia.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variáveis CSS para as cores */
+ :root {
+    --vermelhoescuro: #693120;
+    --vermelhosangue: #310E03;
+    --icterina: #fffa66;
+    --cidra: #cccc00;
+    --ourovelho: #9d8f10;
+    --roxo: #40264a;
+    --branco: #ffffff;
+    --preto: #000000;
+}
+
+/* Estilo global para o corpo da página */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    /* Garante que o body tenha pelo menos a altura da viewport */
+    position: relative;
+    /* Necessário para posicionar corretamente o footer */
+    color: var(--branco);
+    background-color: var(--preto);
+}
+
+/* Estilo para o cabeçalho */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-color: var(--vermelhoescuro);
+    color: var(--icterina);
+}
+
+/* Estilo para a navegação */
+nav {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--vermelhoescuro);
+}
+
+/* Estilo para o menu de navegação */
+.nav-menu {
+    list-style-type: none;
+    /* Remove marcadores das listas */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    /* Centraliza os itens do menu */
+}
+
+.nav-menu li {
+    margin: 0 10px;
+    /* Espaçamento entre os itens do menu */
+}
+
+.nav-menu a {
+    display: block;
+    color: var(--branco);
+    /* Cor do texto */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    /* Remove o sublinhado */
+    font-size: 18px;
+    /* Tamanho da fonte */
+    background-color: var(--vermelhoescuro);
+}
+
+.nav-menu a:hover {
+    background-color: var(--vermelhosangue);
+    /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o conteúdo principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    height: 70%;
+    margin: auto;
+    background-size: 25%;
+    background-image: url('https://img.freepik.com/vetores-premium/desenho-de-camiseta-de-cor-vector-floral_775375-55.jpg?w=740');
+}
+
+/* Estilo para o rodapé */
+footer {
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+    background-color: var(--vermelhoescuro);
+    color: var(--branco);
+}
+
+/* Estilo para a seção de animatronics */
+.animatronics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Estilo para o conteúdo */
+.content {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 30px;
+    /* Espaçamento entre o conteúdo e o vídeo */
+    background-color: var(--roxo);
+    /* Cor de fundo do content */
+    border: 4px solid var(--icterina);
+    /* Adiciona uma borda de 4px de largura e cor icterina */
+}
+
+/* Estilo para o contêiner do vídeo */
+.video-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Espaçamento entre o vídeo e o próximo elemento */
+}
+
+/* Estilo para a fonte personalizada */
+.myfont {
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+}
+
+/* Estilos para os títulos principais */
+.ourworld,
+.ourdelivery,
+.welcometo {
+    text-align: center;
+    font-family: 'Battipaglia', sans-serif;
+    color: var(--icterina);
+    font-size: 15vh;
+}
+
+/* Estilo para os links da classe click */
+.click {
+    color: var(--icterina);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Battipaglia', sans-serif;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave */
+}
+
+/* Estilos específicos para estados dos links da classe click */
+.click:link,
+.click:visited {
+    color: var(--icterina);
+}
+
+.click:hover {
+    color: var(--cidra);
+    /* Cor um pouco mais escura ao passar o mouse */
+}
+
+.click:active {
+    color: var(--ourovelho);
+    /* Cor ainda mais escura ao clicar */
+}
+
+/* Estilo para os parágrafos */
+.parag {
+    text-align: center;
+    font-family: sans-serif;
+    color: var(--branco);
+    font-size: auto;
+}
+
+/* Estilo para o elemento com ID pizza-name */
+#pizza-name {
+    text-align: center;
+}

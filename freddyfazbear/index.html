@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>Freddy Fazbear's Pizza</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="image/favicon.ico" />
+    <style>
+        /* Estilo para o cabeçalho */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 20%;
+            background-color: var(--vermelhoescuro);
+            color: var(--icterina);
+        }
+
+        /* Estilo para a navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--vermelhoescuro);
+        }
+
+        /* Estilo para o menu de navegação */
+        .nav-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Estilo para os itens do menu de navegação */
+        .nav-menu li {
+            margin: 0 10px;
+        }
+
+        /* Estilo para os links do menu de navegação */
+        .nav-menu a {
+            display: block;
+            color: var(--branco);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            background-color: var(--vermelhoescuro);
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--vermelhosangue);
+        }
+
+        /* Estilo específico para o link de registro */
+        .nav-menu .register {
+            position: absolute;
+            right: 10px;
+            /* Ajuste a distância do canto direito conforme necessário */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="ourworld">Our little fantasy world!</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-menu">
+            <a class="click" href="#">
+                <li>Home</li>
+            </a>
+            <a class="click" rel="next" href="aboutus.html">
+                <li>A little presentation</li>
+            </a>
+            <a class="click" href="delivery.html">
+                <li>Delivery Service</li>
+            </a>
+            <a class="click register" href="signup.html">
+                <li>Register</li>
+            </a>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="animatronics">
+            <img src="image/welcome-to-freddys.png"
+                alt="Animatronic characters Freddy Fazbear, Chica, and Bonnie holding a banner that says 'Welcome to Freddy's'"
+                class="image" />
+        </section>
+        <audio autoplay>
+            <source src="sound/toreador_march.mp3" type="audio/mp3" />
+            <source src="sound/toreador_march.ogg" type="audio/ogg" />
+            <source src="sound/toreador_march.wav" type="audio/wav" />
+        </audio>
+    </main>
+
+    <footer>
+        <div class="myfont">
+            <p>Our number: XXX XXXX-XXXX</p>
+            <p><a class="click" target="_blank" rel="external noopener noreferrer" alt="Rickrolled!"
+                    href="https://rickroll.it/rickroll.mp4">Our email: freddyfazbearpizza0231@gmail.com</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
