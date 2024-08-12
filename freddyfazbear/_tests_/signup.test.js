@@ -1,76 +1,47 @@
 // __tests__/signup.test.js
-const { JSDOM } = require('jsdom');
 const { validateForm } = require('../signup'); // Ajuste o caminho conforme necessário
 
-let dom;
-let document;
-let window;
-
-beforeEach(() => {
-  dom = new JSDOM(`
-    <html>
-      <body>
-        <form id="form">
-          <input id="email" type="text" value="test@example.com">
-          <input id="password" type="password" value="Password123!">
-          <input id="confirmPassword" type="password" value="Password123!">
-          <input id="age" type="number" value="20">
-          <select id="state">
-            <option value="SP">São Paulo</option>
-          </select>
-          <select id="city"></select>
-          <p id="passwordError"></p>
-          <p id="confirmPasswordError"></p>
-        </form>
-      </body>
-    </html>
-  `);
-  document = dom.window.document;
-  window = dom.window;
-  global.document = document;
-  global.window = window;
+// Teste de senha com regras corretas
+it('should return true if password meets all requirements', () => {
+  expect(validateForm('Password123!', 'Password123!', 20)).toBe(true);
 });
 
-describe('validateForm', () => {
-  test('should return false if password is invalid', () => {
-    document.getElementById('password').value = 'short';
-    document.getElementById('confirmPassword').value = 'short';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de senha com menos de 3 caracteres
+it('should return false if password is less than 3 characters', () => {
+  expect(validateForm('a1', 'a1', 20)).toBe(false);
+});
 
-  test('should return false if passwords do not match', () => {
-    document.getElementById('password').value = 'Password123!';
-    document.getElementById('confirmPassword').value = 'Different123!';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de senha faltando número
+it('should return false if password is missing numbers', () => {
+  expect(validateForm('Password!', 'Password!', 20)).toBe(false);
+});
 
-  test('should return false if age is below 18', () => {
-    document.getElementById('age').value = '17';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de senha faltando letra
+it('should return false if password is missing letters', () => {
+  expect(validateForm('12345!', '12345!', 20)).toBe(false);
+});
 
-  test('should return true if all validations pass', () => {
-    document.getElementById('password').value = 'Password123!';
-    document.getElementById('confirmPassword').value = 'Password123!';
-    document.getElementById('age').value = '20';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de senha faltando símbolo
+it('should return false if password is missing symbols', () => {
+  expect(validateForm('Password123', 'Password123', 20)).toBe(false);
+});
 
-  test('should return false if password is missing numbers', () => {
-    document.getElementById('password').value = 'Password!';
-    document.getElementById('confirmPassword').value = 'Password!';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de repetição de senha correta
+it('should return false if passwords do not match', () => {
+  expect(validateForm('Password123!', 'Different123!', 20)).toBe(false);
+});
 
-  test('should return false if password is missing letters', () => {
-    document.getElementById('password').value = '12345!';
-    document.getElementById('confirmPassword').value = '12345!';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de idade maior ou igual a 18
+it('should return true if age is 18 or older', () => {
+  expect(validateForm('Password123!', 'Password123!', 18)).toBe(true);
+});
 
-  test('should return false if password is missing symbols', () => {
-    document.getElementById('password').value = 'Password123';
-    document.getElementById('confirmPassword').value = 'Password123';
-    expect(validateForm()).toBe(false);
-  });
+// Teste de idade menor que 18
+it('should return false if age is less than 18', () => {
+  expect(validateForm('Password123!', 'Password123!', 17)).toBe(false);
+});
+
+// Teste de idade maior que 150
+it('should return false if age is greater than 150', () => {
+  expect(validateForm('Password123!', 'Password123!', 151)).toBe(false);
 });
