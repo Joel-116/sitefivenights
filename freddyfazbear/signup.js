@@ -16,7 +16,6 @@ function validateForm() {
     const password = ''; // Placeholder para a senha real
     const confirmPassword = ''; // Placeholder para a confirmação da senha real
     const age = 0; // Placeholder para a idade real
-    const city = ''; // Placeholder para a cidade real
 
     const passwordValid = /[a-zA-Z]/.test(password) && /[0-9]/.test(password) && /[\W_]/.test(password);
     if (!passwordValid) {
