@@ -56,8 +56,8 @@
     </header>
 
     <main>
-        <div class="content">
-            <form id="registrationForm" class="formulario" onsubmit="return validateForm()">
+       <div class="content">
+            <form id="registrationForm" class="formulario" onsubmit="return validateForm(event)">
                 <label for="email" class="label">E-mail:</label>
                 <input type="email" id="email" class="input" required />
                 <br />
@@ -74,7 +74,7 @@
                 <p id="ageError" class="alert"></p>
                 <br />
                 <label for="state" class="label">State:</label>
-                <select id="state" class="select" onchange="loadCities()">
+                <select id="state" class="select">
                     <option value="">Select...</option>
                     <option value="SP">São Paulo</option>
                     <option value="RJ">Rio de Janeiro</option>
@@ -86,10 +86,12 @@
                 <select id="city" class="select" disabled>
                     <option value="">Select the state first</option>
                 </select>
+                <p id="cityError" class="alert"></p>
                 <br />
                 <button type="submit" class="button">Submit</button>
+                <p id="successMessage" class="alert"></p>
             </form>
-        </div>
+        </div>  
     </main>
 
     <footer>
