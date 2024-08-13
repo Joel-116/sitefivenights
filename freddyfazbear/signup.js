@@ -1,70 +1,55 @@
-function validatePassword(password) {
+function validatePassword() {
     const password = document.getElementById('password').value;
     const passwordError = document.getElementById('passwordError');
     passwordError.textContent = '';
 
-    const passwordValid = /[a-zA-Z]/.test(password) && /[0-9]/.test(password) && /[\W_]/.test(password);
+    const passwordValid = /[a-zA-Z]/.test(password) &&
+                          /[0-9]/.test(password) &&
+                          /[\W_]/.test(password) &&
+                          password.length >= 8;
+
     if (!passwordValid) {
-        passwordError.textContent = 'Invalid password, missing numbers, letters or symbols.';
+        passwordError.textContent = 'Invalid password. The password must be at least 8 characters long and include letters, numbers and symbols.';
         return false;
     }
     return true;
 }
 
-function validateConfirmPassword(password, confirmPassword) {
+function validateConfirmPassword() {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const confirmPasswordError = document.getElementById('confirmPasswordError');
     confirmPasswordError.textContent = '';
 
     if (password !== confirmPassword) {
-        confirmPasswordError.textContent = 'Passwords do not match';
+        confirmPasswordError.textContent = 'Passwords do not match.';
         return false;
     }
     return true;
 }
 
-function validateAge(age) {
+function validateAge() {
     const age = parseInt(document.getElementById('age').value, 10);
     const ageError = document.getElementById('ageError');
     ageError.textContent = '';
 
-    if (isNaN(age) || age < 18) {
-        ageError.textContent = 'Unable to create account. The minimum age is 18 years old.';
-        return false;
-    }
-    if (age < 0 || age > 150) {
-        ageError.textContent = 'Invalid age. Must be between 0 and 150 years.';
+    if (isNaN(age) || age < 18 || age > 150) {
+        ageError.textContent = 'The minimum age is 18 years old.';
         return false;
     }
     return true;
 }
 
-function validateCity(city) {
+function validateCity() {
     const city = document.getElementById('city').value;
+    const cityError = document.getElementById('cityError');
+    cityError.textContent = '';
+
     if (!city) {
-        document.body.innerHTML += '<p class="alert">Select a city.</p>';
+        cityError.textContent = 'Select a city.';
         return false;
     }
     return true;
-}
-
-function validateForm(password, confirmPassword, age, city) {
-    const isPasswordValid = validatePassword();
-    const isConfirmPasswordValid = validateConfirmPassword();
-    const isAgeValid = validateAge();
-    const isCityValid = validateCity();
-
-    const isPasswordValid = validatePassword(password);
-    const isConfirmPasswordValid = validateConfirmPassword(password, confirmPassword);
-    const isAgeValid = validateAge(age);
-    const isCityValid = validateCity(city);
-
-    if (isPasswordValid && isConfirmPasswordValid && isAgeValid && isCityValid) {
-        document.body.innerHTML += '<p class="alert success">Registration completed successfully!</p>';
-        return true;
-    }
-    return false;
 }
 
 function loadCities() {
@@ -72,41 +57,44 @@ function loadCities() {
     const citySelect = document.getElementById('city');
     citySelect.innerHTML = '';
 
-    if (state === 'SP') {
-        const citiesSP = ['São Paulo', 'Campinas', 'Guarulhos'];
-        citiesSP.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    } else if (state === 'RJ') {
-        const citiesRJ = ['Rio de Janeiro', 'Niterói', 'Campos dos Goytacazes'];
-        citiesRJ.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    } else if (state === 'MG') {
-        const citiesMG = ['Nova Lima', 'Belo Horizonte', 'Juiz de Fora'];
-        citiesMG.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    } else if (state === 'ES') {
-        const citiesES = ['Vitória', 'Vila Velha', 'Serra'];
-        citiesES.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    }
+    const citiesByState = {
+        'SP': ['São Paulo', 'Campinas', 'Guarulhos'],
+        'RJ': ['Rio de Janeiro', 'Niterói', 'Campos dos Goytacazes'],
+        'MG': ['Nova Lima', 'Belo Horizonte', 'Juiz de Fora'],
+        'ES': ['Vitória', 'Vila Velha', 'Serra']
+    };
 
-    citySelect.disabled = false;
+    if (citiesByState[state]) {
+        citiesByState[state].forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+        citySelect.disabled = false;
+    } else {
+        citySelect.disabled = true;
+        const option = document.createElement('option');
+        option.textContent = 'Select state first';
+        citySelect.appendChild(option);
+    }
 }
+
+function validateForm(event) {
+    event.preventDefault(); 
+
+    const isPasswordValid = validatePassword();
+    const isConfirmPasswordValid = validateConfirmPassword();
+    const isAgeValid = validateAge();
+    const isCityValid = validateCity();
+
+    if (isPasswordValid && isConfirmPasswordValid && isAgeValid && isCityValid) {
+        document.getElementById('successMessage').textContent = 'Registration completed successfully!';
+        return true;
+    }
+    return false;
+}
+
+document.getElementById('registrationForm').addEventListener('submit', validateForm);
 
 document.getElementById('state').addEventListener('change', loadCities);
