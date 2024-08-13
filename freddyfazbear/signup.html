@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +7,15 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="image/favicon.ico" />
     <style>
-        /* Estilo para mensagem de erro */
+        /* Estilo para a mensagem de sucesso */
+        #successMessage {
+            color: green;
+            font-family: sans-serif;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        /* Estilo para a mensagem de erro */
         .alert {
             color: var(--cidra);
             font-family: sans-serif;
@@ -49,14 +56,12 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1 class="ourworld">Registration</h1>
     </header>
-
     <main>
-       <div class="content">
+        <div class="content">
             <form id="registrationForm" class="formulario" onsubmit="return validateForm(event)">
                 <label for="email" class="label">E-mail:</label>
                 <input type="email" id="email" class="input" required />
@@ -91,14 +96,11 @@
                 <button type="submit" class="button">Submit</button>
                 <p id="successMessage" class="alert"></p>
             </form>
-        </div>  
+        </div>        
     </main>
-
     <footer>
-        <p class="parag">&copy; All rights reserved.</p>
+        <p style="color: var(--branco)">&copy; 1993 Freddy's Fazbear Pizza</h3>
     </footer>
-
     <script src="signup.js"></script>
 </body>
-
 </html>
